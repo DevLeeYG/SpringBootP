@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Builder //오브젝트 생성을 위한 디자인 패턴 중 하나
+@NoArgsConstructor
 @AllArgsConstructor //매개변수가 없는 생성자를 구현
 @Data
 
