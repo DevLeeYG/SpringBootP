@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.GeneratedValue;
 import org.hibernate.annotations.GenericGenerator;
 
-
+//데이터베이스에 쓰일 필드와 여러 엔티티간 연관관걔를 정의
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
