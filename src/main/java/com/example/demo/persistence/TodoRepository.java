@@ -8,7 +8,7 @@ import com.example.demo.model.TodoEntity;
 import java.util.List;
 
 @Repository
-public interface TodoRepository extends JpaRepository<TodoEntity,String> {
+public interface TodoRepository extends JpaRepository<TodoEntity,String> { //DAO라고 보면된다
 
 
 
