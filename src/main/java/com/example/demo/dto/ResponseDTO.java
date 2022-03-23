@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
-public class ResponseDTO<T> {
+public class ResponseDTO<T> { //빌더를 했을때 이형식으로 들어간다
 
    private String error;
    private List<T> data;
