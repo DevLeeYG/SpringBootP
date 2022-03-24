@@ -12,9 +12,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 //데이터베이스에 쓰일 필드와 여러 엔티티간 연관관걔를 정의
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+@NoArgsConstructor //파라미터가 없는 기본생성자를 만들어준다
+@AllArgsConstructor//멤버변수를 매개 변수로 받을수 있게 해준다
+@Data // @Getter /@Setter/@ToString /@EqualsAndHashCode 와 @RequiredArgsConstructor 를 구현없이 바로 쓸수있게 만들어준다
 @Entity
 @Table(name = "Todo")
 
