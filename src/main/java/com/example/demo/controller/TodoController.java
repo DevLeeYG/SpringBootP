@@ -23,22 +23,28 @@ import java.util.stream.Collectors;
 @RequestMapping("todo")
 
 public class TodoController{
-    @Autowired
+    @Autowired //자동 연결
     private TodoService service;
-
+    /*
+    * RequestBody 를 사용해 바디를 가져온후 dto 에 들어온 인자를 TodoDTO 양식에 맞춘다
+    * */
     @PostMapping
     public ResponseEntity<?> createTodo(@RequestBody TodoDTO dto){
         try{
-            String temporaryUserId = "temprary-user";
+            String temporaryUserId = "temprary-user";// 아이디 자동생성
 
             //(1) TodoEntity 로 변환 -> 컨트롤러로 객체를 받아서 TodoDTO양식으로 엔티티를 구성함
-            TodoEntity entity = TodoDTO.todoEntity(dto);
+            TodoEntity entity = TodoDTO.todoEntity(dto); /*
+            TodoDTO 클래스의 todoEntity 메소드에 dto를 넣는다.
+            */
 
             //(2) id를 null로 초기화한다. 생성 당시에는 id가 없어야 하기 때문
             entity.setId((null));
+            //우선 아이디를 눌로 지정해준다 @Data를 써서 마음껏 getter setter 이용할수있다
 
             //(3) 임시 사용자 아이디를 설정해 준다.
             entity.setUserId(temporaryUserId);
+            //다시 dto에 임시 아이디 지정
 
             //(4) 서비스를 이용해 Todo 엔티티를 생성
             List<TodoEntity> entities = service.create(entity);
