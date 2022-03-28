@@ -2,6 +2,7 @@ package com.example.demo.security;
 
 import com.example.demo.model.UserEntity;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -40,6 +41,15 @@ public class TokenProvider {
         Claims claims = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
 
         return claims.getSubject();
+    }
+
+    public boolean validateToken(String token){
+        try{
+            Jws<Claims> claims = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
+            return !claims.getBody().getExpiration().before(new Date());
+        }catch(Exception e){
+            return false;
+        }
     }
 
 
