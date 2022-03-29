@@ -4,6 +4,7 @@ import com.example.demo.dto.ResponseDTO;
 import com.example.demo.dto.TodoDTO;
 import com.example.demo.model.TodoEntity;
 import com.example.demo.service.TodoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 
-//import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("todo")
-
+@Slf4j
 public class TodoController{
     @Autowired //자동 연결
     private TodoService service;
@@ -47,6 +48,7 @@ public class TodoController{
             //(3) 임시 사용자 아이디를 설정해 준다.
             entity.setUserId(userId);
             //다시 dto에 임시 아이디 지정
+            log.info(entity.getUserId());
 
             //(4) 서비스를 이용해 Todo 엔티티를 생성
             List<TodoEntity> entities = service.create(entity);
